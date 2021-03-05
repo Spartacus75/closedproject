@@ -4,12 +4,13 @@ export default function MainScreen(){
 
 
 
-
-
   return (
     <>
 
-    <Map/>
+    <Map
+        />
+
+
 
     </>
   )

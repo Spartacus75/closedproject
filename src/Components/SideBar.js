@@ -14,6 +14,7 @@ const styles = {
 
 const onClickSearch = () =>{
   alert('ça marche')
+  console.log('on récupère les données sur le serveur...')
 }
 
 
@@ -22,7 +23,7 @@ const onClickSearch = () =>{
     <div style={styles.sideBarCSS}>
     SIDE BAR
     <Button
-    label="Search"
+    label="Filter"
     onClick={onClickSearch}
     />
     </div>
