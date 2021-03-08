@@ -60,18 +60,28 @@ export default function CustomizedDialogs(props) {
 
       <Dialog onClose={handleClose} aria-labelledby="customized-dialog-title" open={open}>
         <DialogTitle id="customized-dialog-title" onClose={handleClose}>
-          Modal title
+          {data.name} - {data.wtg}
         </DialogTitle>
         <DialogContent dividers>
           <Typography gutterBottom>
-{data.name}
-{data.wtg}
+          <br/>
+          Le budget LOG est de : {data.pm_bud_G4}
+          <br/>
+PREALABLE: METTRE EN PLACE UNE AUTHENTIFICATION!!!!
+Scope
+Table: COST PM /LOG / CM vs Gate 4 FC
+Indicate the cost Breakdown
+Other Revenue
+Other relevant information
+
+
+
           </Typography>
 
         </DialogContent>
         <DialogActions>
           <Button autoFocus onClick={handleClose} color="primary">
-            Save changes
+            Close
           </Button>
         </DialogActions>
       </Dialog>
