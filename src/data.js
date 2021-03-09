@@ -44,5 +44,28 @@ export const data =[
     towerCountry: 'Portugal',
     x:49.01941509577086,
     y:1.7606770653006216
+  },
+  {
+    projectName: 'Dummy Greece',
+    wtgFullName: '10 x N131 / TS114 - Delta',
+    qtty: 10,
+    generation: 'Delta',
+    hubHeight: 114,
+    section: 5,
+    pm_bud_G4: 12346,
+    log_bud_G4: 456753,
+    pm_bud_built: 222222,
+    log_bud_built: 789456,
+    cm_bud_built: 222222,
+    cm_bud_built: 222222,
+    portEntry: 'Rouen',
+    bladeSupplier: 'TPI',
+    nacelleSupplier: 'Nordex',
+    towerSupplier: 'Tegopi',
+    bladeCountry: 'Turkey',
+    nacelleCountry: 'Germany',
+    towerCountry: 'Portugal',
+    x:49.01941509577086,
+    y:1.7606770653006216
   }
 ]

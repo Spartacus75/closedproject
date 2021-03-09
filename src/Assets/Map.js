@@ -4,6 +4,7 @@ import Dialog from './Dialog'
 import React, {useState} from 'react'
 import {data}  from '../data.js'
 import SelectMarker from './SelectMarker'
+import {useSelector, useDispatch} from 'react-redux'
 
 const geoUrl =
   "https://raw.githubusercontent.com/zcreativelabs/react-simple-maps/master/topojson-maps/world-110m.json";
@@ -11,6 +12,8 @@ const geoUrl =
 
 export default function MainScreen(props){
 
+  const isPortShown = useSelector(state => state.isPortShown)
+  const isProjectShown = useSelector(state => state.isProjectShown)
   const [isShown, setIsShown] = useState(false)
   const [project, setProject] = useState([])
 
@@ -142,10 +145,8 @@ return {
     setIsShown(false)
   }
 
-//console.log("PROJECT", project)
 
-//console.log(data)
-//console.log(markersWFBIS? markersWFBIS : 'vide.')
+console.log("port?", isPortShown)
 
   return (
     <>
@@ -172,7 +173,7 @@ return {
       </Geographies>
 
 
-      {markersWF.map(({ name, coordinates, markerOffset, wtg, pm_bud_G4}) => (
+      {isProjectShown.value &&  markersWF.map(({ name, coordinates, markerOffset, wtg, pm_bud_G4}) => (
         <Marker
           key={name}
           coordinates={coordinates}
@@ -191,7 +192,7 @@ return {
       ))}
 
 
-      {markersPort.map(({ name, coordinates, markerOffset }) => (
+      {isPortShown.value && markersPort.map(({ name, coordinates, markerOffset }) => (
         <Marker
           key={name}
           coordinates={coordinates}

@@ -1,9 +1,16 @@
 import Switch from './Switch'
 import {useState} from 'react'
 
+import {useSelector, useDispatch} from 'react-redux'
+
 export default function SelectMarker(){
 
 //liste des markers sous forme de tableau
+
+const isPortShown = useSelector(state => state.isPortShown)
+const isProjectShown = useSelector(state => state.isProjectShown)
+
+const dispatch = useDispatch()
 
 const styles = {
   selector: {
@@ -28,9 +35,26 @@ const [state, setState] = useState({
 });
 
 
-const handleChange = (event) => {
+const handleChangePort = (event) => {
   setState({ ...state, [event.target.name]: event.target.checked });
+  dispatch(
+    {
+      type: event.target.checked? 'SHOW_PORT' : 'HIDE_PORT',
+      payload: event.target.checked
+    }
+  )
 };
+
+const handleChangeProject = (event) => {
+  setState({ ...state, [event.target.name]: event.target.checked });
+  dispatch(
+    {
+      type: event.target.checked? 'SHOW_PROJECT' : 'HIDE_PROJECT',
+      payload: event.target.checked
+    }
+  )
+};
+
 
 console.log(state)
 
@@ -42,7 +66,7 @@ console.log(state)
           Show/Hide Port Of Entry
           <Switch
             checked={state.checkedPort}
-            onChange={handleChange}
+            onChange={handleChangePort}
             name="checkedPort"
           />
           </div>
@@ -51,7 +75,7 @@ console.log(state)
           Show/Hide Project
           <Switch
             checked={state.checkedProject}
-            onChange={handleChange}
+            onChange={handleChangeProject}
             name="checkedProject"
           />
           </div>
