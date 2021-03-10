@@ -1,7 +1,7 @@
-const initialState = {favoritesProject:[]}
+const initialState = {filterProject:[]}
 
 
-const toggleFavorite = (state = initialState, action) => {
+const filterProject = (state = initialState, action) => {
   let nextState
   switch (action.type) {
     case 'TOGGLE_FAVORITE':
@@ -29,4 +29,4 @@ const toggleFavorite = (state = initialState, action) => {
   }
 }
 
-export default toggleFavorite
+export default filterProject

@@ -1,9 +1,11 @@
 export const data =[
   {
     projectName: 'Paudy',
+    projectScope: 'Turn Key',
     wtgFullName: '5 x N117 / R91 - Delta',
     qtty: 5,
     generation: 'Delta',
+    blade: 'N117',
     hubHeight: 91,
     section: 4,
     pm_bud_G4: 29990000,
@@ -24,9 +26,11 @@ export const data =[
   },
   {
     projectName: 'Dummy',
+    projectScope: 'Clean Selling',
     wtgFullName: '10 x N131 / TS114 - Delta',
     qtty: 10,
     generation: 'Delta',
+    blade: 'N131',
     hubHeight: 114,
     section: 5,
     pm_bud_G4: 222222,
@@ -47,9 +51,11 @@ export const data =[
   },
   {
     projectName: 'Dummy Greece',
+    projectScope: 'Clean Selling',
     wtgFullName: '10 x N131 / TS114 - Delta',
     qtty: 10,
     generation: 'Delta',
+    blade: 'N131',
     hubHeight: 114,
     section: 5,
     pm_bud_G4: 12346,
@@ -67,5 +73,30 @@ export const data =[
     towerCountry: 'Portugal',
     x:49.01941509577086,
     y:1.7606770653006216
+  },
+  {
+    projectName: 'Dummy Croatia',
+    projectScope: 'Clean Selling',
+    wtgFullName: '18 x N131 / TS114 - Delta',
+    qtty: 18,
+    generation: 'Delta',
+    blade: 'N131',
+    hubHeight: 114,
+    section: 5,
+    pm_bud_G4: 12346,
+    log_bud_G4: 456753,
+    pm_bud_built: 222222,
+    log_bud_built: 789456,
+    cm_bud_built: 222222,
+    cm_bud_built: 222222,
+    portEntry: 'Rouen',
+    bladeSupplier: 'TPI',
+    nacelleSupplier: 'Nordex',
+    towerSupplier: 'Tegopi',
+    bladeCountry: 'Turkey',
+    nacelleCountry: 'Germany',
+    towerCountry: 'Portugal',
+    x:50.01941509577086,
+    y:10.7606770653006216
   }
 ]
