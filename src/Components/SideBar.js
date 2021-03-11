@@ -4,12 +4,23 @@ import {data}  from '../data.js'
 import {useState} from 'react'
 import {useSelector, useDispatch} from 'react-redux'
 
+const budgetType = [
+  {
+  budgetGap:'On target or improved'
+},
+{
+  budgetGap:'Budget deviation from 0% to 5%',
+},
+{
+  budgetGap:'Budget deviation from 5% to 10%'
+}
+]
 
 export default function SideBar(){
 
 const styles = {
   sideBarCSS: {
-    backgroundColor: 'red',
+    backgroundColor: '#FFE4CC',
     //height: '100%'
     minWidth: '350px'
   },
@@ -32,6 +43,19 @@ const styles = {
 
 
 const [byName, setByName] =useState('')
+const [bySize, setBySize] =useState('')
+const [byScope, setByScope] =useState('')
+const [byGeneration, setByGeneration] =useState('')
+const [byHeight, setByHeight] =useState('')
+const [byBlade, setByBlade] =useState('')
+const [byTower, setByTower] =useState('')
+const [byFromBlade, setByFromBlade] =useState('')
+const [byFromTower, setByFromTower] =useState('')
+const [byFromNacelle, setByFromNacelle] =useState('')
+const [byPMLOGBudget, setByPMLOGBudget] =useState('')
+const [byPMLBudget, setByPMBudget] =useState('')
+const [byLOGBudget, setByLOGBudget] =useState('')
+
 
 
 const onClickSearch = () =>{
@@ -40,17 +64,51 @@ const onClickSearch = () =>{
 
 const onChangeName = (event) => {
   setByName(event.target.value)
-
+}
+const onChangeSize = (event) => {
+  setBySize(event.target.value)
+}
+const onChangeScope = (event) => {
+  setByScope(event.target.value)
+}
+const onChangeGeneration = (event) => {
+  setByGeneration(event.target.value)
+}
+const onChangeHeight = (event) => {
+  setByHeight(event.target.value)
+}
+const onChangeBlade = (event) => {
+  setByBlade(event.target.value)
+}
+const onChangeTower = (event) => {
+  setByTower(event.target.value)
+}
+const onChangeFromBlade = (event) => {
+  setByFromBlade(event.target.value)
+}
+const onChangeFromTower = (event) => {
+  setByFromTower(event.target.value)
+}
+const onChangeFromNacelle = (event) => {
+  setByFromNacelle(event.target.value)
+}
+const onChangePMLOGBudget = (event) => {
+  setByPMLOGBudget(event.target.value)
+}
+const onChangePMBudget = (event) => {
+  setByPMBudget(event.target.value)
+}
+const onChangeLOGBudget = (event) => {
+  setByLOGBudget(event.target.value)
 }
 
-console.log(byName)
 
   return (
     <>
     <div style={styles.sideBarCSS}>
 
     {/*PROJECT DESCRIPTION*/}
-    <p>Project Information</p>
+    <p>Filter by Project</p>
     <div style={styles.subMenuBar}>
 
 
@@ -66,8 +124,8 @@ console.log(byName)
               />
 
               <Select
-                value={byName}
-                onChange={onChangeName}
+                value={bySize}
+                onChange={onChangeSize}
                 //label={byName}
                 donnee={data}
                 filterType="qtty"
@@ -75,8 +133,8 @@ console.log(byName)
               />
 
               <Select
-                value={byName}
-                onChange={onChangeName}
+                value={byScope}
+                onChange={onChangeScope}
                 //label={byName}
                 donnee={data}
                 filterType="projectScope"
@@ -87,13 +145,13 @@ console.log(byName)
 
     {/*WTG DESCRIPTION*/}
 
-  <p>WTG Information</p>
+  <p>Filter by WTG type</p>
   <div style={styles.subMenuBar}>
 
 
     <Select
-      value={byName}
-      onChange={onChangeName}
+      value={byGeneration}
+      onChange={onChangeGeneration}
       //label={byName}
       donnee={data}
       filterType="generation"
@@ -101,8 +159,8 @@ console.log(byName)
     />
 
     <Select
-      value={byName}
-      onChange={onChangeName}
+      value={byHeight}
+      onChange={onChangeHeight}
       //label={byName}
       donnee={data}
       filterType="hubHeight"
@@ -110,8 +168,8 @@ console.log(byName)
     />
 
     <Select
-      value={byName}
-      onChange={onChangeName}
+      value={byBlade}
+      onChange={onChangeBlade}
       //label={byName}
       donnee={data}
       filterType="blade"
@@ -122,11 +180,11 @@ console.log(byName)
 
     {/*SOURCING DESCRIPTION*/}
 
-    <p>Sourcing Information</p>
-    <div style={styles.subMenuBar}>  
+    <p>Filter by WTG component origin</p>
+    <div style={styles.subMenuBar}>
     <Select
-      value={byName}
-      onChange={onChangeName}
+      value={byFromBlade}
+      onChange={onChangeFromBlade}
       //label={byName}
       donnee={data}
       filterType="bladeCountry"
@@ -134,8 +192,8 @@ console.log(byName)
     />
 
     <Select
-      value={byName}
-      onChange={onChangeName}
+      value={byFromTower}
+      onChange={onChangeFromTower}
       //label={byName}
       donnee={data}
       filterType="towerCountry"
@@ -143,8 +201,8 @@ console.log(byName)
     />
 
     <Select
-      value={byName}
-      onChange={onChangeName}
+      value={byFromNacelle}
+      onChange={onChangeFromNacelle}
       //label={byName}
       donnee={data}
       filterType="nacelleCountry"
@@ -153,18 +211,38 @@ console.log(byName)
 
   </div>
     {/*SOURCING DESCRIPTION*/}
+    <p>Filter by budget (PM / LOG)</p>
+    <div style={styles.subMenuBar}>
+
+    <Select
+      value={byPMLOGBudget}
+      onChange={onChangePMLOGBudget}
+      //label={byName}
+      donnee={budgetType}
+      filterType="budgetGap"
+      label="Overall PM/LOG"
+    />
+    <Select
+      value={byPMLBudget}
+      onChange={onChangePMBudget}
+      //label={byName}
+      donnee={budgetType}
+      filterType="budgetGap"
+      label="PM only "
+    />
+    <Select
+      value={byLOGBudget}
+      onChange={onChangeLOGBudget}
+      //label={byName}
+      donnee={budgetType}
+      filterType="budgetGap"
+      label="LOG only "
+    />
 
 
-    Filter by: <br/>
-    Budget PM & LOG on target (or better)<br/>
-    Budget PM on target (or better)<br/>
-    Budget LOG on target (or better)<br/>
-    Budget PM & LOG on below<br/>
-    Budget PM on target below<br/>
-    Budget LOG on target below<br/>
-    <br/>
-    Faire même chose avec CM
-    <br/>
+    </div>
+
+
 
 
     <br/>
