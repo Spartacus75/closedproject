@@ -29,7 +29,7 @@ export const data =[
     projectScope: 'Clean Selling',
     wtgFullName: '10 x N131 / TS114 - Delta',
     qtty: 10,
-    generation: 'Delta',
+    generation: 'Delta 5000',
     blade: 'N131',
     hubHeight: 114,
     section: 5,
@@ -43,11 +43,11 @@ export const data =[
     bladeSupplier: 'TPI',
     nacelleSupplier: 'Nordex',
     towerSupplier: 'Tegopi',
-    bladeCountry: 'Turkey',
+    bladeCountry: 'Nowhere',
     nacelleCountry: 'Germany',
     towerCountry: 'Portugal',
     x:49.01941509577086,
-    y:1.7606770653006216
+    y:2.2
   },
   {
     projectName: 'Dummy Greece',
@@ -70,7 +70,7 @@ export const data =[
     towerSupplier: 'Tegopi',
     bladeCountry: 'Turkey',
     nacelleCountry: 'Germany',
-    towerCountry: 'Portugal',
+    towerCountry: 'Spain',
     x:49.01941509577086,
     y:1.7606770653006216
   },
@@ -95,7 +95,7 @@ export const data =[
     towerSupplier: 'Tegopi',
     bladeCountry: 'Turkey',
     nacelleCountry: 'Germany',
-    towerCountry: 'Portugal',
+    towerCountry: 'Danemark',
     x:50.01941509577086,
     y:10.7606770653006216
   }

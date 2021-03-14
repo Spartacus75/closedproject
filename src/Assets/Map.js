@@ -14,6 +14,7 @@ export default function MainScreen(props){
 
   const isPortShown = useSelector(state => state.isPortShown)
   const isProjectShown = useSelector(state => state.isProjectShown)
+  const filterProject = useSelector(state => state.filterProject)
   const [isShown, setIsShown] = useState(false)
   const [project, setProject] = useState([])
 
@@ -47,25 +48,30 @@ export default function MainScreen(props){
   ];*/
 
 
-const markersWF = data.map(item => {
+  const markersWF = data.map(item => {
 
-return {
-  'markerOffset': -15,
-  'name': item.projectName,
-  'coordinates': [item.y, item.x],
-  'wtg': item.wtgFullName,
-  'qtty': item.qqty,
-  'generation': 'Delta',
-  'hubHeight': 91,
-  'section': 4,
-  'pm_bud_G4': item.pm_bud_G4,
-  'log_bud_G4': item.log_bud_G4,
-  'pm_bud_built': item.pm_bud_built,
-  'log_bud_built': item.log_bud_built,
-  'cm_bud_built': item.cm_bud_built,
-  'cm_bud_built': item.cm_bud_builts
-}
-})
+  return {
+    'markerOffset': -15,
+    'name': item.projectName,
+    'coordinates': [item.y, item.x],
+    'wtg': item.wtgFullName,
+    'qtty': item.qtty,
+    'scope': item.projectScope,
+    'generation': item.generation,
+    'blade': item.blade,
+    'hubHeight': item.hubHeight,
+    'section': item.section,
+    'fromBlade': item.bladeCountry,
+    'fromNacelle': item.nacelleCountry,
+    'fromTower': item.towerCountry,
+    'pm_bud_G4': item.pm_bud_G4,
+    'log_bud_G4': item.log_bud_G4,
+    'pm_bud_built': item.pm_bud_built,
+    'log_bud_built': item.log_bud_built,
+    'cm_bud_built': item.cm_bud_built,
+    'cm_bud_built': item.cm_bud_builts
+  }
+  })
 
   const markersPort = [
     {
@@ -145,8 +151,7 @@ return {
     setIsShown(false)
   }
 
-
-console.log("port?", isPortShown)
+console.log('fdfdsfds',filterProject.filterProject.projectName)
 
   return (
     <>
@@ -173,7 +178,73 @@ console.log("port?", isPortShown)
       </Geographies>
 
 
-      {isProjectShown.value &&  markersWF.map(({ name, coordinates, markerOffset, wtg, pm_bud_G4}) => (
+      {isProjectShown.value &&  markersWF
+        //filtre project
+        .filter(item => {
+          if (filterProject.filterProject.projectName ==''){
+            return item
+          } else
+          return item.name == filterProject.filterProject.projectName
+        })
+        //filtre size
+        .filter(item => {
+          if (filterProject.filterProject.projectSize ==''){
+            return item
+          } else
+          return item.qtty == filterProject.filterProject.projectSize
+        })
+        //filtre scope
+        .filter(item => {
+          if (filterProject.filterProject.projectScope ==''){
+            return item
+          } else
+          return item.scope == filterProject.filterProject.projectScope
+        })
+        //filtre generation
+        .filter(item => {
+          if (filterProject.filterProject.generation ==''){
+            return item
+          } else
+          return item.generation == filterProject.filterProject.generation
+        })
+        //filtre height
+        .filter(item => {
+          if (filterProject.filterProject.hubHeight ==''){
+            return item
+          } else
+          return item.hubHeight == filterProject.filterProject.hubHeight
+        })
+        //filterType
+        .filter(item => {
+          if (filterProject.filterProject.blade ==''){
+            return item
+          } else
+          return item.blade == filterProject.filterProject.blade
+        })
+        //filter fromBlade
+        .filter(item => {
+          if (filterProject.filterProject.fromBlade ==''){
+            return item
+          } else
+          return item.fromBlade == filterProject.filterProject.fromBlade
+        })
+        //filter fromNacelle
+        .filter(item => {
+          if (filterProject.filterProject.fromNacelle ==''){
+            return item
+          } else
+          return item.fromNacelle == filterProject.filterProject.fromNacelle
+        })
+        //filter fromTower
+        .filter(item => {
+          if (filterProject.filterProject.fromTower ==''){
+            return item
+          } else
+          return item.fromTower == filterProject.filterProject.fromTower
+        })
+
+
+        .map(({ name, coordinates, markerOffset, wtg, pm_bud_G4}) => (
         <Marker
           key={name}
           coordinates={coordinates}

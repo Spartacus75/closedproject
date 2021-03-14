@@ -18,6 +18,9 @@ const budgetType = [
 
 export default function SideBar(){
 
+const filterProject = useSelector(state => state.filterProject)
+const dispatch = useDispatch()
+
 const styles = {
   sideBarCSS: {
     backgroundColor: '#FFE4CC',
@@ -48,7 +51,6 @@ const [byScope, setByScope] =useState('')
 const [byGeneration, setByGeneration] =useState('')
 const [byHeight, setByHeight] =useState('')
 const [byBlade, setByBlade] =useState('')
-const [byTower, setByTower] =useState('')
 const [byFromBlade, setByFromBlade] =useState('')
 const [byFromTower, setByFromTower] =useState('')
 const [byFromNacelle, setByFromNacelle] =useState('')
@@ -58,54 +60,200 @@ const [byLOGBudget, setByLOGBudget] =useState('')
 
 
 
-const onClickSearch = () =>{
-  console.log('on récupère les données sur le serveur...')
+const onClickReset = () =>{
+  setByName('')
+  setBySize('')
+  setByScope('')
+  setByGeneration('')
+  setByHeight('')
+  setByBlade('')
+  setByFromTower('')
+  setByFromBlade('')
+  setByFromNacelle('')
+  setByPMLOGBudget('')
+  setByPMBudget('')
+  setByLOGBudget('')
+  dispatch(
+    {
+      type: 'CHANGE_NAME',
+      payload: ''
+    }
+  )
+  dispatch(
+    {
+      type: 'CHANGE_SIZE',
+      payload: ''
+    }
+  )
+  dispatch(
+    {
+      type: 'CHANGE_SCOPE',
+      payload: ''
+    }
+  )
+  dispatch(
+    {
+      type: 'CHANGE_GENERATION',
+      payload: ''
+    }
+  )
+  dispatch(
+    {
+      type: 'CHANGE_HEIGHT',
+      payload: ''
+    }
+  )
+  dispatch(
+    {
+      type: 'CHANGE_BLADE',
+      payload: ''
+    }
+  )
+  dispatch(
+    {
+      type: 'CHANGE_FROMBLADE',
+      payload: ''
+    }
+  )
+  dispatch(
+    {
+      type: 'CHANGE_FROMNACELLE',
+      payload: ''
+    }
+  )
+  dispatch(
+    {
+      type: 'CHANGE_FROMTOWER',
+      payload: ''
+    }
+  )
+  dispatch(
+    {
+      type: 'CHANGE_PMLOGBUDGET',
+      payload: ''
+    }
+  )
+  dispatch(
+    {
+      type: 'CHANGE_PMBUDGET',
+      payload: ''
+    }
+  )
+  dispatch(
+    {
+      type: 'CHANGE_LOGBUDGET',
+      payload: ''
+    }
+  )
 }
 
 const onChangeName = (event) => {
   setByName(event.target.value)
+  dispatch(
+    {
+      type: 'CHANGE_NAME',
+      payload: event.target.value
+    })
 }
 const onChangeSize = (event) => {
   setBySize(event.target.value)
+  dispatch(
+    {
+      type: 'CHANGE_SIZE',
+      payload: event.target.value
+    })
 }
 const onChangeScope = (event) => {
   setByScope(event.target.value)
+  dispatch(
+    {
+      type: 'CHANGE_SCOPE',
+      payload: event.target.value
+    })
 }
 const onChangeGeneration = (event) => {
   setByGeneration(event.target.value)
+  dispatch(
+    {
+      type: 'CHANGE_GENERATION',
+      payload: event.target.value
+    })
 }
 const onChangeHeight = (event) => {
   setByHeight(event.target.value)
+  dispatch(
+    {
+      type: 'CHANGE_HEIGHT',
+      payload: event.target.value
+    })
 }
 const onChangeBlade = (event) => {
   setByBlade(event.target.value)
-}
-const onChangeTower = (event) => {
-  setByTower(event.target.value)
+  dispatch(
+    {
+      type: 'CHANGE_BLADE',
+      payload: event.target.value
+    })
 }
 const onChangeFromBlade = (event) => {
   setByFromBlade(event.target.value)
+  dispatch(
+    {
+      type: 'CHANGE_FROMBLADE',
+      payload: event.target.value
+    })
 }
 const onChangeFromTower = (event) => {
   setByFromTower(event.target.value)
+  dispatch(
+    {
+      type: 'CHANGE_FROMTOWER',
+      payload: event.target.value
+    })
 }
 const onChangeFromNacelle = (event) => {
   setByFromNacelle(event.target.value)
+  dispatch(
+    {
+      type: 'CHANGE_FROMNACELLE',
+      payload: event.target.value
+    })
 }
 const onChangePMLOGBudget = (event) => {
   setByPMLOGBudget(event.target.value)
+  dispatch(
+    {
+      type: 'CHANGE_PMLOGBUDGET',
+      payload: event.target.value
+    })
 }
 const onChangePMBudget = (event) => {
   setByPMBudget(event.target.value)
+  dispatch(
+    {
+      type: 'CHANGE_PMBUDGET',
+      payload: event.target.value
+    })
 }
 const onChangeLOGBudget = (event) => {
   setByLOGBudget(event.target.value)
+  dispatch(
+    {
+      type: 'CHANGE_LOGBUDGET',
+      payload: event.target.value
+    })
 }
 
 
   return (
     <>
     <div style={styles.sideBarCSS}>
+
+    <Button
+    label="Reset Filter"
+    onClick={onClickReset}
+    />
+
 
     {/*PROJECT DESCRIPTION*/}
     <p>Filter by Project</p>
@@ -246,11 +394,7 @@ const onChangeLOGBudget = (event) => {
 
 
     <br/>
-    <br/>
-    <Button
-    label="Filter"
-    onClick={onClickSearch}
-    />
+
 
     <div style={styles.resultCSS}>
     {data
