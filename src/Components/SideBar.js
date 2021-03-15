@@ -13,7 +13,10 @@ const budgetType = [
 },
 {
   budgetGap:'Budget deviation from 5% to 10%'
-}
+},
+{
+  budgetGap:'Budget deviation above 10%'
+},
 ]
 
 export default function SideBar(){

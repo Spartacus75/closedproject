@@ -69,7 +69,10 @@ export default function MainScreen(props){
     'pm_bud_built': item.pm_bud_built,
     'log_bud_built': item.log_bud_built,
     'cm_bud_built': item.cm_bud_built,
-    'cm_bud_built': item.cm_bud_builts
+    'cm_bud_built': item.cm_bud_builts,
+    'deviation_pm': ((item.pm_bud_G4-item.pm_bud_built)/(item.pm_bud_G4)),
+    'deviation_log':((item.log_bud_G4-item.log_bud_built)/(item.log_bud_G4)),
+    'deviation_pm_log':((item.pm_bud_G4+item.log_bud_G4-item.pm_bud_built-item.log_bud_built)/(item.pm_bud_G4+item.log_bud_G4))
   }
   })
 
@@ -133,12 +136,16 @@ export default function MainScreen(props){
   ];
 
 
-  const onClickMarkerWF = (name, wtg, pm_bud_G4) => {
+  const onClickMarkerWF = (name, wtg, pm_bud_G4, pm_bud_built,
+  log_bud_G4, log_bud_built) => {
     console.log('valeur à vérifier: ', name, wtg, pm_bud_G4)
     setProject({
       name: name,
       wtg: wtg,
-      pm_bud_G4: pm_bud_G4
+      pm_bud_G4: pm_bud_G4,
+      pm_bud_built: pm_bud_built,
+      log_bud_G4: log_bud_G4,
+      log_bud_built: log_bud_built
     })
     //setProject(name)
     setIsShown(true)
@@ -151,7 +158,7 @@ export default function MainScreen(props){
     setIsShown(false)
   }
 
-console.log('fdfdsfds',filterProject.filterProject.projectName)
+console.log(markersWF)
 
   return (
     <>
@@ -242,9 +249,83 @@ console.log('fdfdsfds',filterProject.filterProject.projectName)
           } else
           return item.fromTower == filterProject.filterProject.fromTower
         })
+        //filter pmBudget
+        .filter(item => {
+          if (filterProject.filterProject.pmBudget ==''){
+            return item
+          } else {
+            switch (filterProject.filterProject.pmBudget){
+
+              case 'On target or improved':
+                return (item.deviation_pm ==0 || item.deviation_pm>=0)
+
+              case 'Budget deviation from 0% to 5%':
+                return (item.deviation_pm <0 && item.deviation_pm >-0.05)
+
+              case 'Budget deviation from 5% to 10%':
+                return (item.deviation_pm <=-0.05 && item.deviation_pm >-0.1)
+
+              case 'Budget deviation above 10%':
+                return (item.deviation_pm <= -0.1)
+
+              default:
+                return item
+                    }
+                  }
+        })
+        //filter logBudget
+        .filter(item => {
+          if (filterProject.filterProject.logBudget ==''){
+            return item
+          } else {
+            switch (filterProject.filterProject.logBudget){
+
+              case 'On target or improved':
+                return (item.deviation_log ==0 || item.deviation_log>=0)
+
+              case 'Budget deviation from 0% to 5%':
+                return (item.deviation_log <0 && item.deviation_log >-0.05)
+
+              case 'Budget deviation from 5% to 10%':
+                return (item.deviation_log <=-0.05 && item.deviation_log >-0.1)
+
+              case 'Budget deviation above 10%':
+                return (item.deviation_log <= -0.1)
+
+              default:
+                return item
+                    }
+                  }
+        })
+        //filter pm+logBudget
+        .filter(item => {
+          if (filterProject.filterProject.pmLOGBudget ==''){
+            return item
+          } else {
+            switch (filterProject.filterProject.pmLOGBudget){
+
+              case 'On target or improved':
+                return (item.deviation_pm_log ==0 || item.deviation_pm_log>=0)
+
+              case 'Budget deviation from 0% to 5%':
+                return (item.deviation_pm_log <0 && item.deviation_pm_log >-0.05)
+
+              case 'Budget deviation from 5% to 10%':
+                return (item.deviation_pm_log <=-0.05 && item.deviation_pm_log >-0.1)
+
+              case 'Budget deviation above 10%':
+                return (item.deviation_pm_log <= -0.1)
+
+              default:
+                return item
+                    }
+                  }
+        })
 
 
-        .map(({ name, coordinates, markerOffset, wtg, pm_bud_G4}) => (
+
+        .map(({ name, coordinates, markerOffset, wtg, pm_bud_G4, pm_bud_built,
+        log_bud_G4, log_bud_built}) => (
         <Marker
           key={name}
           coordinates={coordinates}
@@ -256,7 +337,8 @@ console.log('fdfdsfds',filterProject.filterProject.projectName)
                               //console.log('on sort');
                             }}
           data-tip={`${name} - ${wtg}`}
-          onClick={()=> onClickMarkerWF(name, wtg, pm_bud_G4)}
+          onClick={()=> onClickMarkerWF(name, wtg, pm_bud_G4, pm_bud_built,
+          log_bud_G4, log_bud_built)}
         >
           <circle r={5} fill="black" stroke="#fff" strokeWidth={2} />
         </Marker>
@@ -290,7 +372,16 @@ console.log('fdfdsfds',filterProject.filterProject.projectName)
     <Dialog
               open={isShown}
               handleClose={handleClose}
-              data={{name: project.name, wtg: project.wtg, pm_bud_G4: project.pm_bud_G4}}
+              data={{
+                name: project.name,
+                wtg: project.wtg,
+                pm_bud_G4: project.pm_bud_G4,
+                pm_bud_built: project.pm_bud_built,
+                log_bud_G4: project.log_bud_G4,
+                log_bud_built: project.log_bud_built,
+                cm_bud_G4: project.cm_bud_G4,
+                cm_bud_built: project.cm_bud_built
+              }}
   />
 
 

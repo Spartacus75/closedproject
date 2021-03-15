@@ -65,8 +65,18 @@ export default function CustomizedDialogs(props) {
         <DialogContent dividers>
           <Typography gutterBottom>
           <br/>
-          Le budget LOG est de : {data.pm_bud_G4}
+          Le budget PM 'G4' est de : {data.pm_bud_G4}<br/>
+          Le budget PM 'built' est de : {data.pm_bud_built}<br/>
+          Deviation PM: {Math.round(1000*(data.pm_bud_G4-data.pm_bud_built)/(data.pm_bud_G4))/10} %
           <br/>
+          Le budget LOG 'G4' est de : {data.log_bud_G4}<br/>
+          Le budget LOG 'built' est de : {data.log_bud_built}<br/>
+          Deviation LOG: {Math.round(1000*(data.log_bud_G4-data.log_bud_built)/(data.log_bud_G4))/10} %
+          <br/>
+          PM + LOG 'G4':{data.pm_bud_G4+data.log_bud_G4}<br/>
+          PM + LOG 'built': {data.pm_bud_built+data.log_bud_built}<br/>
+          Deviaton: {Math.round(1000*(data.pm_bud_G4+data.log_bud_G4-data.pm_bud_built-data.log_bud_built)/(data.pm_bud_G4+data.log_bud_G4))/10} %<br/>
+
 PREALABLE: METTRE EN PLACE UNE AUTHENTIFICATION!!!!
 Scope
 Table: COST PM /LOG / CM vs Gate 4 FC

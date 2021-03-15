@@ -67,17 +67,17 @@ const filterProject = (state = initialState, action) => {
 
     case 'CHANGE_PMLOGBUDGET':
       state.filterProject['pmLOGBudget'] = action.payload
-      nextState = state
+      nextState = {...state, pmLOGBudget: filterProject['pmLOGBudget']}
       return nextState || state
 
     case 'CHANGE_PMBUDGET':
       state.filterProject['pmBudget'] = action.payload
-      nextState = state
+      nextState = {...state, pmBudget: filterProject['pmBudget']}
       return nextState || state
 
     case 'CHANGE_LOGBUDGET':
       state.filterProject['logBudget'] = action.payload
-      nextState = state
+      nextState = {...state, logBudget: filterProject['logBudget']}
       return nextState || state
 
   default:
