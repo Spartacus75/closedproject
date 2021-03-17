@@ -1,5 +1,3 @@
-- remove the duplicate in the select box
 - display the list of project in plain text somewhere (clickable)
 - populate the list of information from CPM
 - improve presentation of the dialog box
-- list of closed project by Port

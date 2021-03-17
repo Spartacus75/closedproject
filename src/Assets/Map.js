@@ -5,6 +5,8 @@ import React, {useState} from 'react'
 import {data}  from '../data.js'
 import SelectMarker from './SelectMarker'
 import {useSelector, useDispatch} from 'react-redux'
+import ListProject from './ListProject'
+import DialogII from './DialogII'
 
 const geoUrl =
   "https://raw.githubusercontent.com/zcreativelabs/react-simple-maps/master/topojson-maps/world-110m.json";
@@ -17,6 +19,9 @@ export default function MainScreen(props){
   const filterProject = useSelector(state => state.filterProject)
   const [isShown, setIsShown] = useState(false)
   const [project, setProject] = useState([])
+  const [isShownPort, setIsShownPort] = useState(false)
+  const [projectPortEntry, setProjectPortEntry] = useState([])
+  const [port, setPort] = useState('')
 
   const styles = {
     MainScreenCSS: {
@@ -154,8 +159,23 @@ export default function MainScreen(props){
 
   }
 
+  const onClickMarkerPort = (data, name) => {
+        var tableau= data.filter(item => item.portEntryBlade == name || item.portEntryNacelle == name ||item.portEntryTower == name)
+        setProjectPortEntry(tableau)
+        setPort(name)
+        setIsShownPort(true)
+  }
+
+
+
+
+
   const handleClose = () => {
     setIsShown(false)
+  }
+
+  const handleClosePort = () => {
+    setIsShownPort(false)
   }
 
 console.log(markersWF)
@@ -163,6 +183,7 @@ console.log(markersWF)
   return (
     <>
     <div style={styles.MainScreenCSS}>
+
 
     <SelectMarker/>
 
@@ -357,6 +378,7 @@ console.log(markersWF)
                               //console.log('on sort');
                             }}
           data-tip={`${name} port`}
+          onClick={()=>onClickMarkerPort(data, name)}
         >
           <circle r={5} fill="orange" stroke="#fff" strokeWidth={2} />
 
@@ -382,6 +404,14 @@ console.log(markersWF)
                 cm_bud_G4: project.cm_bud_G4,
                 cm_bud_built: project.cm_bud_built
               }}
+  />
+
+    <DialogII
+            open={isShownPort}
+            handleClose={handleClosePort}
+            port={port}
+            data={projectPortEntry}
+
   />
 
 

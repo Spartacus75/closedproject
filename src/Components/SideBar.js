@@ -395,16 +395,6 @@ const onChangeLOGBudget = (event) => {
 
 
 
-
-    <br/>
-
-
-    <div style={styles.resultCSS}>
-    {data
-      .map(item => (<p>{item.projectName}</p>))}
-    </div>
-
-
     </div>
     </>
   )

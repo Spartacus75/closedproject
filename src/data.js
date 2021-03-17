@@ -22,7 +22,10 @@ export const data =[
     nacelleCountry: 'Germany',
     towerCountry: 'Portugal',
     x:47.01941509577086,
-    y:1.906770653006216
+    y:1.906770653006216,
+    portEntryNacelle: 'Anvers',
+    portEntryTower: 'Anvers',
+    portEntryBlade: 'Anvers'
   },
   {
     projectName: 'Dummy',
@@ -47,7 +50,10 @@ export const data =[
     nacelleCountry: 'Germany',
     towerCountry: 'Portugal',
     x:49.01941509577086,
-    y:2.2
+    y:2.2,
+    portEntryNacelle: 'Manfredonia',
+    portEntryTower: 'Manfredonia',
+    portEntryBlade: 'Manfredonia'
   },
   {
     projectName: 'Dummy Greece',
@@ -72,7 +78,10 @@ export const data =[
     nacelleCountry: 'Germany',
     towerCountry: 'Spain',
     x:49.01941509577086,
-    y:1.7606770653006216
+    y:1.7606770653006216,
+    portEntryNacelle: 'Manfredonia',
+    portEntryTower: 'Manfredonia',
+    portEntryBlade: 'Manfredonia'
   },
   {
     projectName: 'Dummy Croatia',
@@ -97,7 +106,10 @@ export const data =[
     nacelleCountry: 'Germany',
     towerCountry: 'Danemark',
     x:50.01941509577086,
-    y:10.7606770653006216
+    y:10.7606770653006216,
+    portEntryNacelle: 'Manfredonia',
+    portEntryTower: 'Manfredonia',
+    portEntryBlade: 'Manfredonia'
   },
   {
     projectName: 'Dummy Japan',
@@ -122,7 +134,10 @@ export const data =[
     nacelleCountry: 'Germany',
     towerCountry: 'Danemark',
     x:50.01941509577086,
-    y:8.5
+    y:8.5,
+    portEntryNacelle: 'Manfredonia',
+    portEntryTower: 'Manfredonia',
+    portEntryBlade: 'Manfredonia'
   },
   {
     projectName: 'Dummy korea',
@@ -147,6 +162,9 @@ export const data =[
     nacelleCountry: 'Germany',
     towerCountry: 'Danemark',
     x:50.01941509577086,
-    y:8
+    y:8,
+    portEntryNacelle: 'Lavrio',
+    portEntryTower: 'Anvers',
+    portEntryBlade: 'Lavrio'
   }
 ]
