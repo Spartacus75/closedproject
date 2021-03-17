@@ -43,7 +43,19 @@ export default function SimpleSelect(props) {
           //label={label}
         >
         <MenuItem value=''>***</MenuItem>
-        {donnee.map(item => (<MenuItem value={item[filterType]}>{item[filterType]}</MenuItem>))}
+        {donnee
+
+          .filter((v,i,a)=> a.findIndex(t => (t[filterType] === v[filterType])) ===i)
+
+          .sort((a,b) => {
+            if (filterType !="budgetGap"){
+              return (a[filterType] >b[filterType]) ? 1 : -1
+            }
+                        })
+
+
+          .map(item => (<MenuItem value={item[filterType]}>{item[filterType]}</MenuItem>))
+          }
 
 
         </Select>
