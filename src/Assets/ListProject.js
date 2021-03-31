@@ -20,7 +20,7 @@ function renderRow(props) {
 //  console.log('donnee', donnee)
 console.log('props', props)
   return (
-    <ListItem button style={style} key={index}>
+    <ListItem button style={style} key={index} onClick={()=>{alert('cliq')}}>
       <ListItemText primary={
         data[`${index}`].name + ' - ' +
         data[`${index}`].wtg + ' - '
