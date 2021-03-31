@@ -39,8 +39,22 @@ export default function MainScreen(props){
     },
     projection:{
       projection: "geoAzimuthalEqualArea"
+    },
+    selector: {
+      backgroundColor: 'white',
+      width: 'auto',
+      position: 'absolute',
+      zIndex: 1,
+      margin: '50px',
+      padding:'10px',
+      borderRadius: '10px'
+    },
+    upperCSS: {
+      display: 'flex',
+      justifyContent: 'space-between',
+      position: 'absolute',
+      width: 'inherit'
     }
-
   }
 
 /*const markersWF = [
@@ -178,14 +192,25 @@ export default function MainScreen(props){
     setIsShownPort(false)
   }
 
-console.log(markersWF)
+//console.log('ici', markersWF)
 
   return (
     <>
     <div style={styles.MainScreenCSS}>
 
+    <div style={styles.upperCSS}>
 
-    <SelectMarker/>
+            <div>
+            <SelectMarker/>
+            </div>
+
+            <div>
+            <ListProject
+              data={markersWF}
+            />
+            </div>
+
+    </div>
 
     <ComposableMap
           style={styles.mapCSS}

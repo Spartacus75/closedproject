@@ -1,3 +1,4 @@
 - display the list of project in plain text somewhere (clickable)
 - populate the list of information from CPM
 - improve presentation of the dialog box
+- Dans un port, lorsqu'on clique sur un projet, on doit atterir sur le projet.
