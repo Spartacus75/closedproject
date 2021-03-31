@@ -92,7 +92,7 @@ export const data =[
     blade: 'N131',
     hubHeight: 114,
     section: 5,
-    pm_bud_G4: 123456,
+    pm_bud_G4: 133456,
     log_bud_G4: 456753,
     pm_bud_built: 222222,
     log_bud_built: 789456,
