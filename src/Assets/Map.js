@@ -51,9 +51,10 @@ export default function MainScreen(props){
     },
     upperCSS: {
       display: 'flex',
-      justifyContent: 'space-between',
+      justifyContent: 'space-between',//previously space-between
       position: 'absolute',
-      width: 'inherit'
+      width: 'inherit',
+      margin: '8px'
     }
   }
 

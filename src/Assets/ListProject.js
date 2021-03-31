@@ -9,18 +9,22 @@ const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
     height: 200,
-    maxWidth: 300,
+    maxWidth: 500,
     backgroundColor: theme.palette.background.paper,
   },
 }));
 
 function renderRow(props) {
-  const { index, style, donnee} = props;
+  const { index, style, data} = props;
 
-
+//  console.log('donnee', donnee)
+console.log('props', props)
   return (
     <ListItem button style={style} key={index}>
-      <ListItemText primary={`Item ${index + 1}` + ' - ' } />
+      <ListItemText primary={
+        data[`${index}`].name + ' - ' +
+        data[`${index}`].wtg + ' - '
+  }/>
     </ListItem>
   );
 }
@@ -38,8 +42,8 @@ export default function VirtualizedList(props) {
 
   return (
     <div className={classes.root}>
-      <FixedSizeList height={200} width={300} itemSize={40} itemCount={100}
-                    itemData={{data}}>
+      <FixedSizeList height={200} width={500} itemSize={40} itemCount={data.length}
+                    itemData={data}>
         {renderRow}
 
       </FixedSizeList>

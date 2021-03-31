@@ -2,3 +2,4 @@
 - populate the list of information from CPM
 - improve presentation of the dialog box
 - Dans un port, lorsqu'on clique sur un projet, on doit atterir sur le projet.
+- inclure une rubrique pays
